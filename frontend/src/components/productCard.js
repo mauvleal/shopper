@@ -9,11 +9,7 @@ function ProductCard({ product }) {
             <p>{`Codigo: ${product.code}`}</p>
             <p>{`Preço de Custo: R$ ${product.cost_price}`}</p>
             <p>{`Preço de Venda: R$ ${product.sales_price}`}</p>
-            {/* <div>{product.name}</div>
-            <div>{product.code}</div>
-            <div>{product.cost}</div>
-            <div>{product.price}</div> */}
-            <input></input>      
+            <input placeholder='Novo Preço R$'></input>      
     </div>
      
         </main>

@@ -1,5 +1,5 @@
 const express = require('express');
-const {findAll, findById} = require('./db/productsDb')
+const {findAll, findById, update} = require('./db/productsDb')
 const cors = require('cors');
 
 const app = express();
@@ -30,6 +30,19 @@ app.get('/products/:id', async (req, res) => {
       console.log(err);
       res.status(500).json({ message: err.sqlMessage });
     }
+  });
+
+  app.put('/products/:id', async (req, res) => {
+    const { id } = req.params;
+    const newData = req.body;
+      
+    const [result] = await upDate(newData, id);
+  
+    if (!result) {
+      res.status(404).json({ message: 'Product not Found' });
+    }
+  
+    res.status(201).json({ product: newData });
   });
 
 

@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import ProductCard from "../components/productCard";
-import Axios from "axios";
+import API from "../api/api";
 
 function Products() {
     const [products, setProducts] = useState([]);
+    const [enableButton] = useState(true);
 
-    console.log(products)
     useEffect(() => {
-      Axios.get("http://localhost:3001/products").then((response) => {
-        console.log(response);
-        setProducts(response.data.result)
-    })
+        const fetchProducts = async () =>{
+            const response = await API.getALLProducts()
+            setProducts(response.data.result)
+        };
+     fetchProducts();
     }, []);
     
         return (
@@ -18,6 +19,15 @@ function Products() {
 
             <div>
                 <h1>Todos os Produtos</h1>
+                <button> VALIDAR ALTERAÇÕES </button>
+                <section>
+                <button
+                    disabled={ enableButton }
+                    // onClick={ updatePrices }
+                >Atualizar
+                </button>
+              
+            </section>
             </div>
             <div>
                 
@@ -26,8 +36,7 @@ function Products() {
                return <ProductCard key={product.id} product={product} />
             })}
 
-        <button> VALIDAR </button>
-        <button> ATUALIZAR </button>
+
             </main>
         )
     }

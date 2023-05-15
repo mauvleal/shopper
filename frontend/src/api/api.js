@@ -1,14 +1,40 @@
 import axios from "axios";
 
-async function api() {
-  try {
-    const url = `http://localhost:3001/`;
-    const fetchApi = await axios.get(url);
-    console.log(fetchApi.data)
-    return fetchApi.data;
-  } catch (error) {
-    return { error };
-  }
-}
+const API = axios.create({
+  baseURL: "http://localhost:3001"
+});
 
-export default api;
+const getALLProducts = async () => {
+  try {
+    const response = await API.get('/products');
+    return response;
+  } catch (error) {
+    return error.response;
+  }
+};
+
+const getById = async (id) => {
+  try {
+    const response = await API.get(`/products/${id}`);
+    return response;
+  } catch (error) {
+    return error.response;
+  }
+};
+
+const upDate = async (id) => {
+  try {
+    const response = await API.put(`/products/${id}`);
+    return response;
+  } catch (error) {
+    return error.response;
+  }
+};
+
+
+// eslint-disable-next-line import/no-anonymous-default-export
+export default {
+getALLProducts,
+getById,
+upDate,
+};

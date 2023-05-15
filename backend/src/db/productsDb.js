@@ -13,7 +13,14 @@ const findById = async (code) => {
 
 }
 
+const upDate = (newdata, code) => connection.execute(
+    `UPDATE products 
+      SET sales_price = ? WHERE code = ?`,
+    [newdata.sales_price, code],
+  );
+
 module.exports = {
     findAll,
-    findById
+    findById,
+    upDate,
 }
