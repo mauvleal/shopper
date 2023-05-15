@@ -1,8 +1,11 @@
 const express = require('express');
 const {findAll, findById} = require('./db/productsDb')
+const cors = require('cors');
 
 const app = express();
 app.use(express.json());
+
+app.use(cors());
 
 app.get('/products', async (_req, res) => {
     try {

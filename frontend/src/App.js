@@ -5,9 +5,12 @@ import Products from './pages/Products';
 
 function App() {
   return (
+    
     <BrowserRouter>
+    <div>
       <Route exact path="/" component={Home} />
       <Route path="/products" component={Products} />
+    </div>
     </BrowserRouter>
   );
 }
