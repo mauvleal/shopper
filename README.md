@@ -33,7 +33,7 @@ Front End
 comando para clonar o repositorio: 
 
 ```
-git clone https://github.com/mauvleal/shopper
+git clone git@github.com:mauvleal/shopper.git
 ```
 _____
 ## 2
