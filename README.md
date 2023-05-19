@@ -47,9 +47,11 @@ cd shopper/backend
 ```
 npm install
 ```
-- Caso queira crie uma imagem do mysql com o Docker Compose:
+- Crie uma imagem do mysqle nodejs com o Docker Compose, para rodar e criar o banco:
 ```
 docker-compose up -D 
+```
+- Inicialize o Back da Aplicação
 ```
 npm start   ou   npm run dev
 ```
@@ -84,5 +86,3 @@ _____
 - Adicionar css
 
 <br>
-
-
