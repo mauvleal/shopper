@@ -6,7 +6,8 @@ import csvReader from "../utils/csvReader";
 function Home (){
     const [id, setID] = useState();
     const [file, setFile] = useState(null);
-
+    const [isValid] = useState(false);
+    
 
     const handleFile = async (event) => {
         const file = event.target.files[0]
@@ -34,15 +35,26 @@ function Home (){
             </Link>
             </div>
             <div>
+            _____________________________________
 
-            <h2>Leitor do Arquivo CSV</h2>
+            <h2>Alterar produtos pelo Arquivo CSV</h2>
             <input className="file-input__input" type="file" accept=".csv" onChange={handleFile}/>
             </div>
-            {file && <h3>Produtos a alterar</h3>}
+            {file && (
+                <div>
+                <h3>Produtos a alterar</h3>
+                <button>Validar</button>
+                <button disabled={!isValid}>Atualizar</button>
+                </div>
+                
+            )}
+
             {file && 
                  file.data.map((product) => {
                     return <ProductChange key={product.product_code} product={product} />
-                })}
+                })
+                
+            }
                 
             </div>
         )

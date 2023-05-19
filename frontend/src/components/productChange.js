@@ -5,11 +5,8 @@ function ProductChange({ product }) {
         <main>
 
     <div>
-            <p>{`Codigo: ${product.product_code}`} - {`New Price: R$ ${product.new_price}`}</p>
-           
-             
+            <p>{`Codigo: ${product.product_code}`} - {`New Price: R$ ${product.new_price}`}</p>      
     </div>
-     
         </main>
     );
 };
