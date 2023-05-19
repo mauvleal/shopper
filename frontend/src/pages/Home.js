@@ -35,9 +35,10 @@ function Home (){
             </div>
             <div>
 
-            <h1>Leitor do Arquivo CSV</h1>
+            <h2>Leitor do Arquivo CSV</h2>
             <input className="file-input__input" type="file" accept=".csv" onChange={handleFile}/>
             </div>
+            {file && <h3>Produtos a alterar</h3>}
             {file && 
                  file.data.map((product) => {
                     return <ProductChange key={product.product_code} product={product} />
