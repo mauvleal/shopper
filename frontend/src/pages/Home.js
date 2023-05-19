@@ -1,18 +1,17 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import ProductChange from "../components/productChange";
 import csvReader from "../utils/csvReader";
 
 function Home (){
     const [id, setID] = useState();
     const [file, setFile] = useState(null);
 
-    console.log(file)
 
-    const handleFileSelect = async (event) => {
+    const handleFile = async (event) => {
         const file = event.target.files[0]
         const csvData = await csvReader(file)
         setFile(csvData)
-        console.log(file);
       };
 
 
@@ -34,11 +33,16 @@ function Home (){
             <button >Buscar</button>
             </Link>
             </div>
+            <div>
 
             <h1>Leitor do Arquivo CSV</h1>
-          
-          <input className="file-input__input" type="file" accept=".csv" onChange={handleFileSelect}/>
-          
+            <input className="file-input__input" type="file" accept=".csv" onChange={handleFile}/>
+            </div>
+            {file && 
+                 file.data.map((product) => {
+                    return <ProductChange key={product.product_code} product={product} />
+                })}
+                
             </div>
         )
     }
