@@ -13,7 +13,7 @@ const findById = async (code) => {
 
 }
 
-const upDate = (newdata, code) => connection.execute(
+const upDate = (code, newdata) => connection.execute(
     `UPDATE products 
       SET sales_price = ? WHERE code = ?`,
     [newdata.sales_price, code],

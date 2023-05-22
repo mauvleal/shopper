@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import api from "../api/api";
 import ProductChange from "../components/productChange";
 import csvReader from "../utils/csvReader";
+
 
 function Home (){
     const [id, setID] = useState();
     const [file, setFile] = useState(null);
-    const [isValid] = useState(false);
+    const [isValid] = useState(true);
     
 
     const handleFile = async (event) => {
@@ -15,6 +17,16 @@ function Home (){
         setFile(csvData)
       };
 
+     
+
+    const handleUpdate = async () => {
+        const data = {
+            "sales_price": file.data[0].new_price
+          }
+        const code = file.data[0].product_code
+        await api.upDate(code, data);
+        console.log(data, code);
+      };
 
         return (
             <div>
@@ -44,7 +56,7 @@ function Home (){
                 <div>
                 <h3>Produtos a alterar</h3>
                 <button>Validar</button>
-                <button disabled={!isValid}>Atualizar</button>
+                <button disabled={!isValid} onClick={handleUpdate}>Atualizar</button>
                 </div>
                 
             )}

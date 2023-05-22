@@ -22,9 +22,9 @@ const getById = async (id) => {
   }
 };
 
-const upDate = async (id) => {
+const upDate = async (id, data) => {
   try {
-    const response = await API.put(`/products/${id}`);
+    const response = await API.put(`/products/${id}`, data );
     return response;
   } catch (error) {
     return error.response;
