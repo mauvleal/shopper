@@ -9,6 +9,8 @@ function Home (){
     const [id, setID] = useState();
     const [file, setFile] = useState(null);
     const [isValid] = useState(true);
+    const [message, setMessage] = useState(false)
+
     
 
     const handleFile = async (event) => {
@@ -25,6 +27,7 @@ function Home (){
           }
         const code = file.data[0].product_code
         await api.upDate(code, data);
+        setMessage(!message)
         console.log(data, code);
       };
 
@@ -57,6 +60,7 @@ function Home (){
                 <h3>Produtos a alterar</h3>
                 <button>Validar</button>
                 <button disabled={!isValid} onClick={handleUpdate}>Atualizar</button>
+                {message && <p>Produto Atualizado com Sucesso!!</p>}
                 </div>
                 
             )}

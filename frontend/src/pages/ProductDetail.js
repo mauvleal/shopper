@@ -5,8 +5,8 @@ import API from "../api/api";
 
 function ProductDetail() {
     const [product, setProduct] = useState([]);
-    const [message] = useState("Aumento pendente de validação");
     const [enableButton] = useState(false);
+    const [newPrice, setNewPrice] = useState('')
 
     const { id } = useParams();
 
@@ -18,22 +18,34 @@ function ProductDetail() {
      fetchProduct();
     }, []);
 
+    const handleUpdate = async () => {
+        const data = {
+            "sales_price": newPrice
+        }
+        await API.upDate(id, data);
+        window.location.reload();
+        console.log(data, id);
+      };
+
+    const upDatePrice = r => {
+        setNewPrice(r)
+        console.log(r);
+    }
+
   
         return (
             <main>
 
             <div>
                 <h1>Todos os Produtos</h1>
-                <button> VALIDAR ALTERAÇÕES </button>
+                <button> Validar </button>
             <section>
                 <button
                     disabled={ enableButton }
-                    // onClick={ updatePric }
+                    onClick={ handleUpdate }
                 >Atualizar
                 </button>
-                {
-                    message && <p>{ message }</p>
-                }
+            
             </section>
             </div>
             <div>
@@ -41,7 +53,7 @@ function ProductDetail() {
             </div>
           
             <div>
-             <ProductCard key={product.id} product={product} />
+             <ProductCard handlePrice={upDatePrice} key={product.id} product={product} />
             </div>
          
             </main>

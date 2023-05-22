@@ -32,9 +32,7 @@ function Products() {
             <div>
                 
             </div>
-           { typeof products !== "undefined" && products.map((product) => {
-               return <ProductCard key={product.id} product={product} />
-            })}
+         c
 
 
             </main>
