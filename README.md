@@ -77,10 +77,11 @@ localhost:3000
 _____
 ## 5
 - Abrirá a aplicação para acesso aos produtos, ou pequisa por ID
+
+- Alteração por arquivo CSV adicionado
 _____
 ## Atualizações nas quais trabalharei em breve
 
-- implementar atualização de produto por ID integrado com o front (apenas rodando no back)
 - Adicionar regras de validação
 - Implementar atualizaçao de produtos em massa
 - Adicionar css
